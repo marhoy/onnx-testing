@@ -1,0 +1,4 @@
+**/*.onnx
+**/*.jpg
+. filter=lfs diff=lfs merge=lfs -text
+hustvl_yolos_tiny_onnx/model.onnx filter=lfs diff=lfs merge=lfs -text

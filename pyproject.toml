@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "onnx-testing"
+name = "onnx_testing"
 version = "0.1.0"
 description = ""
 authors = ["Martin Høy <martin@hoy.priv.no>"]
@@ -7,25 +7,32 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-transformers = "^4.27.3"
-#torch = [
-#    {markers = "platform_machine == 'aarch64'", url = "https://download.pytorch.org/whl/torch-1.13.1-cp310-cp310-manylinux2014_aarch64.whl"},
-#    {markers = "platform_machine != 'aarch64'", version = "1.13.1"}
-#]
 pillow = "^9.4.0"
-optimum = {extras = ["exporters"], version = "^1.7.3"}
 torch = [
-    {markers="platform_machine != 'arm64'", version = "^1.13.1"},
-    {markers="platform_machine == 'arm64'", url = "https://download.pytorch.org/whl/torch-1.13.1-cp310-cp310-manylinux2014_aarch64.whl"},
+    { markers = "platform_machine == 'x86_64'", version = "^1.13.1"},
+    { markers = "platform_machine == 'aarch64'", url = "https://download.pytorch.org/whl/torch-1.13.1-cp310-cp310-manylinux2014_aarch64.whl"},
 ]
+pydantic = "^1.10.7"
+
+[tool.poetry.group.export]
+optional = true
+
+[tool.poetry.group.inference]
+optional = true
+
+
+[tool.poetry.group.export.dependencies]
+transformers = "^4.27.3"
+optimum = {extras = ["exporters"], version = "^1.7.3"}
+
 
 [tool.poetry.group.inference.dependencies]
 onnxruntime = "^1.14.1"
+opencv-python = "^4.7.0.72"
 
 
 [tool.poetry.group.dev.dependencies]
-requests = "^2.28.2"
-ipykernel = "^6.22.0"
+ipykernel = { markers = "platform_machine == 'aarch64'", version = "^6.22.0" }
 
 
 
