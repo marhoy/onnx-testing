@@ -7,7 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+transformers = "^4.27.3"
 pillow = "^9.4.0"
+opencv-python = "^4.7.0.72"
 torch = [
     { markers = "platform_machine == 'x86_64'", version = "^1.13.1"},
     { markers = "platform_machine == 'aarch64'", url = "https://download.pytorch.org/whl/torch-1.13.1-cp310-cp310-manylinux2014_aarch64.whl"},
@@ -22,17 +24,15 @@ optional = true
 
 
 [tool.poetry.group.export.dependencies]
-transformers = "^4.27.3"
 optimum = {extras = ["exporters"], version = "^1.7.3"}
 
 
 [tool.poetry.group.inference.dependencies]
 onnxruntime = "^1.14.1"
-opencv-python = "^4.7.0.72"
 
 
 [tool.poetry.group.dev.dependencies]
-ipykernel = { markers = "platform_machine == 'aarch64'", version = "^6.22.0" }
+ipykernel = { markers = "platform_machine == 'x86_64'", version = "^6.22.0" }
 
 
 
