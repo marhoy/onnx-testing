@@ -19,14 +19,13 @@ def parse_outputs(outputs, threshold: float, target_sizes):
     feature_extractor = get_feature_extractor()
     return feature_extractor.post_process_object_detection(outputs, threshold=threshold, target_sizes=target_sizes)[0]
 
-def annotate_image(image, results):
+def annotate_image(img_arr, results):
     id2label = get_id2label()
-    arr = np.array(image)
     for score, label, box in zip(results["scores"], results["labels"], results["boxes"]):
         box = [int(i) for i in box.tolist()]
 
         # Add bounding box
-        arr = cv2.rectangle(arr, box[:2], box[2:], color=(0,0,0), thickness=2)
+        arr = cv2.rectangle(img_arr, box[:2], box[2:], color=(0,0,0), thickness=2)
 
         # Add text
         x, y = box[:2]
@@ -41,4 +40,4 @@ def annotate_image(image, results):
             thickness=2
         )
 
-    return Image.fromarray(arr)
+    return img_arr
