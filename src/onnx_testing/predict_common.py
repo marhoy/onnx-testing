@@ -19,8 +19,7 @@ def parse_outputs(outputs, threshold: float, target_sizes):
     feature_extractor = get_feature_extractor()
     return feature_extractor.post_process_object_detection(outputs, threshold=threshold, target_sizes=target_sizes)[0]
 
-def annotate_image(img_arr, results):
-    id2label = get_id2label()
+def annotate_image(img_arr, results, id2label):
     for score, label, box in zip(results["scores"], results["labels"], results["boxes"]):
         box = [int(i) for i in box.tolist()]
 
