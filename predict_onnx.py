@@ -1,16 +1,15 @@
 import cv2
-from PIL import Image
 from onnx_testing.predict_onnx import predict
 import time
 
 cap = cv2.VideoCapture(0)
 
 # Set resolution equal to model input
-#cap.set(cv2.CAP_PROP_FRAME_WIDTH, 224)
-#cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 224)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 # Set FPS to slightly higher than what we expect to get
-cap.set(cv2.CAP_PROP_FPS, 1)
+#cap.set(cv2.CAP_PROP_FPS, 1)
 
 last_logged = time.time()
 frame_count = 0
