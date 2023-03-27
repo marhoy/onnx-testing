@@ -11,8 +11,8 @@ transformers = "^4.27.3"
 pillow = "^9.4.0"
 opencv-python = "^4.7.0.72"
 torch = [
-    { markers = "platform_machine == 'x86_64'", version = "^1.13.1"},
     { markers = "platform_machine == 'aarch64'", url = "https://download.pytorch.org/whl/torch-1.13.1-cp310-cp310-manylinux2014_aarch64.whl"},
+    { markers = "platform_machine == 'x86_64'", version = "^1.13.1"},
 ]
 pydantic = "^1.10.7"
 
