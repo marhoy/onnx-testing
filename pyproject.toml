@@ -6,15 +6,12 @@ authors = ["Martin Høy <martin@hoy.priv.no>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9.16"
 transformers = "^4.27.3"
 pillow = "^9.4.0"
-opencv-python = "^4.7.0.72"
-torch = [
-    { markers = "platform_machine == 'aarch64'", url = "https://download.pytorch.org/whl/torch-1.13.1-cp310-cp310-manylinux2014_aarch64.whl"},
-    { markers = "platform_machine == 'x86_64'", version = "^1.13.1"},
-]
 pydantic = "^1.10.7"
+opencv-python = {path = "dependencies/opencv_python-4.7.0.72-cp39-cp39-linux_aarch64.whl"}
+torch = {path = "dependencies/torch-1.13.1-cp39-cp39-manylinux2014_aarch64.whl"}
 
 [tool.poetry.group.export]
 optional = true
@@ -28,7 +25,7 @@ optimum = {extras = ["exporters"], version = "^1.7.3"}
 
 
 [tool.poetry.group.inference.dependencies]
-onnxruntime = "^1.14.1"
+onnxruntime-gpu = {path = "dependencies/onnxruntime_gpu-1.11.0-cp39-cp39-linux_aarch64.whl"}
 
 
 [tool.poetry.group.dev.dependencies]

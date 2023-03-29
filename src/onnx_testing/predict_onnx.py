@@ -7,7 +7,7 @@ import torch
 from transformers.models.yolos.modeling_yolos import YolosObjectDetectionOutput
 
 feature_extractor = YolosImageProcessor.from_pretrained(config.ONNX_DIR)
-session = InferenceSession(config.ONNX_DIR + "/model.onnx")
+session = InferenceSession(config.ONNX_DIR + "/model.onnx", providers=['TensorrtExecutionProvider', 'CUDAExecutionProvider', 'CPUExecutionProvider'])
 id2label = AutoConfig.from_pretrained(config.ONNX_DIR).id2label
 
 def predict(img_arr, threshold: float = 0.9):
